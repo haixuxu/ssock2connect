@@ -91,7 +91,7 @@ module.exports = function transform(remoteHost, remotePort, key, method) {
                         proxysocket.pipe(encryptPipe).pipe(socket);
                         socket.on('error', (err) => {
                             console.log('left socket err:', err.message);
-                            proxysocket.destroy(err);
+                            proxysocket.destroy();
                         });
                     } else {
                         console.log('est error');
@@ -100,7 +100,7 @@ module.exports = function transform(remoteHost, remotePort, key, method) {
             });
             proxysocket.on('error', (err) => {
                 console.log('right socket err:', err.message);
-                socket.destroy(err);
+                socket.destroy();
             });
             proxysocket.write(`CONNECT ${host}:${port} HTTP/1.1\n`);
         }
