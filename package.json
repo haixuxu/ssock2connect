@@ -1,0 +1,20 @@
+{
+  "name": "ssock2connect",
+  "version": "1.0.0",
+  "description": "support shadowsock protocol to http connect",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuxihai123/ssock2connect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuxihai123/ssock2connect/issues"
+  },
+  "homepage": "https://github.com/xuxihai123/ssock2connect#readme"
+}

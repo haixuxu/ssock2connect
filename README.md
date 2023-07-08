@@ -1,2 +1,2 @@
 # ssock2connect
-shadowsock to connect
+support shadowsock protocol to http connect
