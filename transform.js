@@ -74,6 +74,12 @@ module.exports = function transform(remoteHost, remotePort, key, method) {
             }
         });
 
+        ss_socket.on('error',function(err){
+            console.log('err:',err.message);
+        });
+        ss_socket.on('close',function(){
+            // console.log('err:',err.message);
+        });
         function connectForward(host, port, socket, buf, encryptWorker) {
             var proxysocket = net.Socket();
             proxysocket.connect(remotePort, remoteHost, function () {
