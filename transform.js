@@ -102,6 +102,9 @@ module.exports = function transform(remoteHost, remotePort, key, method) {
                 console.log('right socket err:', err.message);
                 socket.destroy(err);
             });
+            proxysocket.on('close',function(){
+                socket.destroy();
+            });
             proxysocket.write(`CONNECT ${host}:${port} HTTP/1.1\n`);
         }
     };
