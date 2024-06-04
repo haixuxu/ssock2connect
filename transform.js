@@ -74,6 +74,12 @@ module.exports = function transform(remoteHost, remotePort, key, method) {
             }
         });
 
+        ss_socket.on('error',function(err){
+            console.log('err:',err.message);
+        });
+        ss_socket.on('close',function(){
+            // console.log('err:',err.message);
+        });
         function connectForward(host, port, socket, buf, encryptWorker) {
             var proxysocket = net.Socket();
             proxysocket.connect(remotePort, remoteHost, function () {
@@ -91,7 +97,7 @@ module.exports = function transform(remoteHost, remotePort, key, method) {
                         proxysocket.pipe(encryptPipe).pipe(socket);
                         socket.on('error', (err) => {
                             console.log('left socket err:', err.message);
-                            proxysocket.destroy(err);
+                            proxysocket.destroy();
                         });
                     } else {
                         console.log('est error');
@@ -100,7 +106,7 @@ module.exports = function transform(remoteHost, remotePort, key, method) {
             });
             proxysocket.on('error', (err) => {
                 console.log('right socket err:', err.message);
-                socket.destroy(err);
+                socket.destroy();
             });
             proxysocket.on('close',function(){
                 socket.destroy();
